@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '@/src/constants/Colors';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
+import { globalsStyles } from '@/src/styles/globals';
 
 type Props = {};
 
@@ -47,7 +48,7 @@ const WelcomeScreen = (props: Props) => {
               </Animated.View>
 
               <Animated.View style={styles.loginWrapper} entering={FadeInRight.delay(700).duration(300)}>
-                <Text style={styles.loginText}>Não tem uma conta? </Text>
+                <Text style={[globalsStyles.textDescription, { lineHeight: 30 }]}>Não tem uma conta? </Text>
                 <Link href={'/auth/signup/signup'} asChild>
                   <TouchableOpacity>
                     <Text style={styles.loginTextSpan}>Cadastrar-se</Text>
@@ -108,11 +109,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 30,
     gap: 1
-  },
-  loginText: {
-    fontSize: 13,
-    color: Colors.gray,
-    lineHeight: 30,
   },
   loginTextSpan: {
     fontSize: 14,
