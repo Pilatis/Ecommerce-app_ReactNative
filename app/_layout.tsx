@@ -1,27 +1,60 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useEffect } from 'react';
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider
+} from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useColorScheme } from '@/src/hooks/useColorScheme';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const user = false;
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf')
   });
 
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
   if (!loaded) {
-    // Async font loading only occurs in development.
     return null;
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+    <ThemeProvider value={DefaultTheme}>
+      <Stack screenOptions={{ headerShown: false }}>
+        {user ? (
+          <Stack.Screen
+            name="(tabs)"
+            options={{ headerShown: false, animation: 'none' }}
+          />
+        ) : (
+          <>
+            <Stack.Screen
+              name="index"
+              options={{ headerShown: false, animation: 'fade' }}
+            />
+            <Stack.Screen
+              name="signin"
+              options={{ presentation: 'modal' }}
+            />
+            <Stack.Screen
+              name="signup"
+              options={{ presentation: 'modal' }}
+            />
+            <Stack.Screen name="+not-found" />
+          </>
+        )}
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
