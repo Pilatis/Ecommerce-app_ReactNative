@@ -20,7 +20,7 @@ const SignInScreen = (props: Props) => {
       />
       <View style={styles.container}>
         <Text>SignIn Screen</Text>
-        <Link href={'/(tabs)'} asChild>
+        {/* <Link href={'/(tabs)'} asChild>
           <TouchableOpacity
             onPress={() => {
               (router.dismissAll(), router.push('/(tabs)'));
@@ -28,7 +28,7 @@ const SignInScreen = (props: Props) => {
           >
             <Text>Go to App Home Screen</Text>
           </TouchableOpacity>
-        </Link>
+        </Link> */}
       </View>
     </>
   );

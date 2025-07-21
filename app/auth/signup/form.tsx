@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Colors } from '@/src/constants/Colors';
 import InputField from '@/src/components/common/form/InputField';
+import { AnimatedView } from '@/src/components/common/animations/AnimatedView';
 
 export const SignUpForm = () => {
   return (
-    <View style={styles.container}>
+    <AnimatedView style={styles.container} fadeType="FadeInDown" delay={500} duration={300}>
       <InputField
         placeholder="Endereço de E-mail"
         placeholderTextColor={Colors.gray}
@@ -24,9 +25,9 @@ export const SignUpForm = () => {
       />
 
       <TouchableOpacity style={styles.buttonForm}>
-        <Text style={styles.buttonText}>Cadastrar</Text>
+        <Text style={styles.buttonText}>Criar Conta</Text>
       </TouchableOpacity>
-    </View>
+    </AnimatedView>
   );
 };
 
@@ -42,8 +43,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     borderRadius: 5,
-    marginBottom: 20,
-    marginTop: 30
+    marginTop: 20
   },
   buttonText: {
     color: Colors.white,

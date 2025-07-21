@@ -7,6 +7,7 @@ import { Colors } from '@/src/constants/Colors';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
 import { globalsStyles } from '@/src/styles/globals';
+import { SocialLoginButton } from '@/src/components/common/SocialLoginButton';
 
 type Props = {};
 
@@ -34,24 +35,13 @@ const WelcomeScreen = (props: Props) => {
                 Solução completa para todas as suas necessidades.
               </Animated.Text>
 
-              <Animated.View style={styles.registerWrapper} entering={FadeInDown.delay(300).duration(500)}>
-                <Link href={'/auth/signin/signin'} asChild>
-                  <TouchableOpacity style={styles.button}>
-                  <Ionicons
-                    name="mail-outline"
-                    size={20}
-                    color={Colors.baseBlack}
-                    />
-                    <Text style={styles.buttonText}>Continue com Email</Text>
-                  </TouchableOpacity>
-                    </Link>
-              </Animated.View>
+              <SocialLoginButton emailHref={'/auth/signup/signup'} />
 
               <Animated.View style={styles.loginWrapper} entering={FadeInRight.delay(700).duration(300)}>
-                <Text style={[globalsStyles.textDescription, { lineHeight: 30 }]}>Não tem uma conta? </Text>
-                <Link href={'/auth/signup/signup'} asChild>
+                <Text style={[globalsStyles.textDescription, { lineHeight: 30 }]}>Já tem uma conta? </Text>
+                <Link href={'/auth/signin/signin'} asChild>
                   <TouchableOpacity>
-                    <Text style={styles.loginTextSpan}>Cadastrar-se</Text>
+                    <Text style={styles.loginTextSpan}>Entrar</Text>
                   </TouchableOpacity>
                 </Link>
               </Animated.View>
@@ -100,9 +90,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginBottom: 20
   },
-  registerWrapper: {
-    alignSelf: 'stretch'
-  },
   loginWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -116,19 +103,4 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     lineHeight: 30
   },
-  button: {
-    flexDirection: 'row',
-    padding: 18,
-    borderColor: Colors.gray,
-    borderWidth: StyleSheet.hairlineWidth,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 7,
-    gap: 5
-  },
-  buttonText: {
-    fontSize: 14,
-    fontWeight: 'semibold',
-    color: Colors.baseBlack
-  }
 });

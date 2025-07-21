@@ -5,6 +5,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '@/src/constants/Colors';
 import { SignUpForm } from './form';
 import { globalsStyles } from '@/src/styles/globals';
+import { SocialLoginButton } from '@/src/components/common/SocialLoginButton';
 
 type Props = {};
 
@@ -20,20 +21,32 @@ const SignUpScreen = (props: Props) => {
         }}
       />
       <View style={styles.container}>
-        <Text style={[styles.title, globalsStyles.defaultTitle]}>Criar uma conta</Text>
-        <SignUpForm />
-        
-
-<View></View>
-        <Text style={[globalsStyles.textDescription, { lineHeight: 30, alignItems: 'center', gap: 3 }]}>
-            Já tem uma conta?
-            <Link href={'/auth/signin/signin'}>
-            <TouchableOpacity>
-              <Text>Entrar</Text>
-            </TouchableOpacity>
-            </Link>
+        <Text style={[styles.title, globalsStyles.defaultTitle]}>
+          Criar uma conta
         </Text>
+
+        <SignUpForm />
+
+        <View style={styles.loginWrapper}>
+          <Text
+            style={[
+              globalsStyles.textDescription,
+              { lineHeight: 30, alignItems: 'center', gap: 3 }
+            ]}
+          >
+            Já tem uma conta?
+          </Text>
+          <Link href={'/auth/signin/signin'}>
+            <TouchableOpacity>
+              <Text style={styles.textSpan}>Entrar</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
         <View style={styles.divider} />
+
+        <View style={{ width: '100%', marginTop: 10 }}>
+          <SocialLoginButton emailHref="/auth/signin/signin" />
+        </View>
       </View>
     </>
   );
@@ -54,15 +67,23 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   textSpan: {
-   fontSize: 14,
-   color: Colors.primary,
-   fontWeight: 'semibold',
-   lineHeight: 30
+    fontSize: 14,
+    color: Colors.primary,
+    fontWeight: 'semibold',
+    lineHeight: 30,
+    marginLeft: 3
   },
-    divider: {
+  divider: {
     borderTopColor: Colors.gray,
     borderTopWidth: StyleSheet.hairlineWidth,
     width: '30%',
-    marginVertical: 30
+    marginVertical: 20
+  },
+  loginWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
+    gap: 1
   }
 });
