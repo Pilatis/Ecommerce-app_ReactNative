@@ -7,12 +7,15 @@ import TabBarBackground from '@/src/components/ui/TabBarBackground';
 import { Colors } from '@/src/constants/Colors';
 import { useColorScheme } from '@/src/hooks/useColorScheme';
 import Ionicons from '@react-native-vector-icons/ionicons';
+import { TabBar } from '@/src/components/common/TabBar/TabBar';
+import { icon } from '@/src/constants/Icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
+      tabBar={(props) => <TabBar {...props} />}
       screenOptions={{
         headerShown: false,
         tabBarButton: HapticTab,
@@ -66,9 +69,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: 'Perfil',
-          tabBarIcon: ({ color }) => (
-            <Ionicons size={22} name="person-outline" color={color} />
-          )
+          tabBarIcon: icon.profile
         }}
       />
     </Tabs>

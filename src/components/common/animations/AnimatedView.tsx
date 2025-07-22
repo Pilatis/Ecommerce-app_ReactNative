@@ -1,18 +1,9 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
 import { fadeAnimations } from '@/src/helpers/fadeAnimation';
-import { FadeType } from '@/src/types/fadeType';
-import Animated, {
-  AnimatedStyle,
-} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
+import { AnimatedViewComponentType } from '@/src/types/animatedComponent';
 
-type AnimatedViewProps = {
-  children: React.ReactNode;
-  style?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
-  fadeType?: FadeType;
-  duration?: number;
-  delay?: number;
-};
+type AnimatedViewProps = AnimatedViewComponentType
 
 export const AnimatedView = ({
   children,

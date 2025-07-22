@@ -4,7 +4,7 @@ import { Colors } from '@/src/constants/Colors';
 import InputField from '@/src/components/common/form/InputField';
 import { AnimatedView } from '@/src/components/common/animations/AnimatedView';
 
-export const SignUpForm = () => {
+const SignUpForm = () => {
   return (
     <AnimatedView style={styles.container} fadeType="FadeInDown" delay={500} duration={300}>
       <InputField
@@ -30,6 +30,8 @@ export const SignUpForm = () => {
     </AnimatedView>
   );
 };
+
+export default SignUpForm;
 
 const styles = StyleSheet.create({
   container: {

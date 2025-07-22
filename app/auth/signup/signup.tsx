@@ -3,9 +3,12 @@ import { Link, Stack } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '@/src/constants/Colors';
-import { SignUpForm } from './form';
+import SignUpForm from './form';
 import { globalsStyles } from '@/src/styles/globals';
 import { SocialLoginButton } from '@/src/components/common/SocialLoginButton';
+import AnimatedText from '@/src/components/common/animations/AnimatedText';
+import { AnimatedView } from '@/src/components/common/animations/AnimatedView';
+import TextAuthLink from '@/src/components/common/TextAuthLink';
 
 type Props = {};
 
@@ -21,32 +24,19 @@ const SignUpScreen = (props: Props) => {
         }}
       />
       <View style={styles.container}>
-        <Text style={[styles.title, globalsStyles.defaultTitle]}>
+        <AnimatedText style={[styles.title, globalsStyles.defaultTitle]} fadeType="FadeInRight">
           Criar uma conta
-        </Text>
+        </AnimatedText>
 
         <SignUpForm />
 
-        <View style={styles.loginWrapper}>
-          <Text
-            style={[
-              globalsStyles.textDescription,
-              { lineHeight: 30, alignItems: 'center', gap: 3 }
-            ]}
-          >
-            Já tem uma conta?
-          </Text>
-          <Link href={'/auth/signin/signin'}>
-            <TouchableOpacity>
-              <Text style={styles.textSpan}>Entrar</Text>
-            </TouchableOpacity>
-          </Link>
-        </View>
+        <TextAuthLink href='/auth/signin/signin' text="Já tem uma conta?" textLink="Entrar" />
+
         <View style={styles.divider} />
 
-        <View style={{ width: '100%', marginTop: 10 }}>
+        <AnimatedView style={{ width: '100%', marginTop: 10 }} fadeType="FadeInDown" delay={400}>
           <SocialLoginButton emailHref="/auth/signin/signin" />
-        </View>
+        </AnimatedView>
       </View>
     </>
   );
@@ -66,24 +56,10 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
     marginBottom: 50
   },
-  textSpan: {
-    fontSize: 14,
-    color: Colors.primary,
-    fontWeight: 'semibold',
-    lineHeight: 30,
-    marginLeft: 3
-  },
   divider: {
     borderTopColor: Colors.gray,
     borderTopWidth: StyleSheet.hairlineWidth,
     width: '30%',
     marginVertical: 20
   },
-  loginWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-    gap: 1
-  }
 });

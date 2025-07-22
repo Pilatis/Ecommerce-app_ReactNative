@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Link, Stack } from 'expo-router';
+import { View, StyleSheet } from 'react-native';
+import { Stack } from 'expo-router';
 import { ImageBackground } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '@/src/constants/Colors';
-import Ionicons from '@react-native-vector-icons/ionicons';
-import Animated, { FadeInDown, FadeInRight } from 'react-native-reanimated';
-import { globalsStyles } from '@/src/styles/globals';
 import { SocialLoginButton } from '@/src/components/common/SocialLoginButton';
+import AnimatedText from '@/src/components/common/animations/AnimatedText';
+import TextAuthLink from '@/src/components/common/TextAuthLink';
 
 type Props = {};
 
@@ -30,21 +29,14 @@ const WelcomeScreen = (props: Props) => {
             style={styles.background}
           >
             <View style={styles.wrapper}>
-              <Animated.Text style={styles.title} entering={FadeInRight.delay(400).duration(300).springify()}>Shoply</Animated.Text>
-              <Animated.Text style={styles.description} entering={FadeInRight.delay(550).duration(300).springify()}>
+              <AnimatedText style={styles.title} fadeType="FadeInRight" delay={400} duration={300}>Shoply</AnimatedText>
+              <AnimatedText style={styles.description} fadeType="FadeInRight" delay={550} duration={3}>
                 Solução completa para todas as suas necessidades.
-              </Animated.Text>
+              </AnimatedText>
 
               <SocialLoginButton emailHref={'/auth/signup/signup'} />
 
-              <Animated.View style={styles.loginWrapper} entering={FadeInRight.delay(700).duration(300)}>
-                <Text style={[globalsStyles.textDescription, { lineHeight: 30 }]}>Já tem uma conta? </Text>
-                <Link href={'/auth/signin/signin'} asChild>
-                  <TouchableOpacity>
-                    <Text style={styles.loginTextSpan}>Entrar</Text>
-                  </TouchableOpacity>
-                </Link>
-              </Animated.View>
+              <TextAuthLink href="/auth/signin/signin" text="Já tem uma conta?" textLink="Entrar" delay={700} />
             </View>
           </LinearGradient>
         </View>
@@ -89,13 +81,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 20,
     marginBottom: 20
-  },
-  loginWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-    gap: 1
   },
   loginTextSpan: {
     fontSize: 14,
