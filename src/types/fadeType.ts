@@ -1,1 +1,0 @@
-export type FadeType = 'FadeIn' | 'FadeInDown' | 'FadeInLeft' | 'FadeInRight' | 'FadeInUp';
