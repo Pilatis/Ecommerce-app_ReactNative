@@ -6,9 +6,7 @@ type Props = {};
 export default function HomeScreen(props: Props) {
   return (
     <View style={styles.container}>
-      <Link href={'/auth/signin'}>
       <Text>Home Screen - back</Text>
-      </Link>
     </View>
   );
 }
