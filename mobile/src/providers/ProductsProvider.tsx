@@ -16,7 +16,6 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (response.status === 200) {
         setProducts(response.data);
-        console.log('success', response.data)
       }
     } catch (error) {
       console.error(error);
@@ -24,6 +23,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
       setLoading(false)
     }
   }, [api]);
+
   return (
     <ProductsContext.Provider value={{ getProducts, products, loading }}>{children}</ProductsContext.Provider>
   );

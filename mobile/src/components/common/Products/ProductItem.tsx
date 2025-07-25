@@ -10,7 +10,7 @@ import React from 'react';
 import { ProductType } from '@/src/types/dataMock';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/src/constants/Colors';
-import { AnimatedView } from './animations/AnimatedView';
+import { AnimatedView } from '../animations/AnimatedView';
 
 type Props = {
   item: ProductType;

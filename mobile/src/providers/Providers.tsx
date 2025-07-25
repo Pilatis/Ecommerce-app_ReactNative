@@ -3,6 +3,7 @@ import ProvidersContext from '../contexts/ProvidersContext';
 import ApiProvider from './ApiProvider';
 import AuthProvider from './AuthProvider';
 import ProductsProvider from './ProductsProvider';
+import CategoryProvider from './CategoryProvider';
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,7 +11,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       <ApiProvider>
         <AuthProvider>
           <ProductsProvider>
-            {children}
+            <CategoryProvider> 
+              {children}
+              </CategoryProvider>
           </ProductsProvider>
         </AuthProvider>
       </ApiProvider>

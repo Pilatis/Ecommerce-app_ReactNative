@@ -17,7 +17,8 @@ const rules = auth.rewriter({
     users: 600,
     orders: 660,
     cart: 660,
-    products: 660,
+    products: 444,
+    categories: 444,
     saleProducts: 660,
     notifications: 660,
 });

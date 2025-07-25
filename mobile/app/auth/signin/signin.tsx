@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Link, router, Stack } from 'expo-router';
-import Ionicons from '@react-native-vector-icons/ionicons';
 import { Colors } from '@/src/constants/Colors';
 import { CloseTab } from '@/src/components/common/CloseTab';
 import { globalsStyles } from '@/src/styles/globals';
 import SignInForm from './form';
-import { SocialLoginButton } from '@/src/components/common/SocialLoginButton';
 import TextAuthLink from '@/src/components/common/TextAuthLink';
 import AnimatedText from '@/src/components/common/animations/AnimatedText';
 
@@ -24,14 +22,20 @@ const SignInScreen = (props: Props) => {
         }}
       />
       <View style={styles.container}>
-        <AnimatedText style={[styles.title, globalsStyles.defaultTitle]} fadeType="FadeInRight">Entrar</AnimatedText>
+        <AnimatedText
+          style={[styles.title, globalsStyles.defaultTitle]}
+          fadeType="FadeInRight"
+        >
+          Entrar
+        </AnimatedText>
         <SignInForm />
 
-        <TextAuthLink href={'/auth/signup/signup'} text="Não tem uma conta?" textLink="Criar conta" />
-
+        <TextAuthLink
+          href={'/auth/signup/signup'}
+          text="Não tem uma conta?"
+          textLink="Criar conta"
+        />
         <View style={styles.divider} />
-
-        
       </View>
     </>
   );
@@ -56,5 +60,5 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
     width: '30%',
     marginVertical: 20
-  },
+  }
 });
