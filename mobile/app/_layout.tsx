@@ -10,10 +10,13 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/src/hooks/useColorScheme';
+import Providers from '@/src/providers/Providers';
+import { useAuth } from '@/src/hooks/useAuth';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const { isAuthenticated } = useAuth();
   const user = false;
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -31,32 +34,28 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
-        {user ? (
-          <Stack.Screen
-            name="(tabs)"
-            options={{ headerShown: false, animation: 'none' }}
-          />
-        ) : (
-          <>
+    <Providers>
+      <ThemeProvider value={DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }}>
+          {isAuthenticated ? (
             <Stack.Screen
-              name="index"
-              options={{ headerShown: false, animation: 'fade' }}
+              name="(tabs)"
+              options={{ headerShown: false, animation: 'none' }}
             />
-            <Stack.Screen
-              name="signin"
-              options={{ presentation: 'modal' }}
-            />
-            <Stack.Screen
-              name="signup"
-              options={{ presentation: 'modal' }}
-            />
-            <Stack.Screen name="+not-found" />
-          </>
-        )}
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+          ) : (
+            <>
+              <Stack.Screen
+                name="index"
+                options={{ headerShown: false, animation: 'fade' }}
+              />
+              <Stack.Screen name="signin" options={{ presentation: 'modal' }} />
+              <Stack.Screen name="signup" options={{ presentation: 'modal' }} />
+              <Stack.Screen name="+not-found" />
+            </>
+          )}
+        </Stack>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </Providers>
   );
 }

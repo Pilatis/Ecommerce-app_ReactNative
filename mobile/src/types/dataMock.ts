@@ -3,7 +3,7 @@ export interface ProductType {
     title: string;
     price: number;
     description: string;
-    images: string[];
+    images: string[] | string;
     category: CategoryProduct
 };
 
