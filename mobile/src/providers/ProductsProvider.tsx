@@ -27,7 +27,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [api]);
 
-  const getProductsSale = useCallback(async () => {
+  const getProductsSale = useCallback(async (): Promise<void> => {
     setLoadingProductsSale(true);
 
     try {
@@ -41,10 +41,10 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
     } finally {
       setLoadingProductsSale(false);
     }
-  }, []);
+  }, [api]);
 
   return (
-    <ProductsContext.Provider value={{ getProducts, products, loading }}>
+    <ProductsContext.Provider value={{ getProducts, getProductsSale, productsSale, products, loading }}>
       {children}
     </ProductsContext.Provider>
   );

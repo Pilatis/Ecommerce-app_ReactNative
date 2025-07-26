@@ -35,7 +35,7 @@ const ProductItem = ({ item, productIndex: index }: Props) => {
         <Text style={styles.price}>${item.price}</Text>
         <View style={styles.ratingBox}>
           <Ionicons name="star" size={20} color="#D4AF37" />
-          <Text style={styles.rating}>4.8</Text>
+          <Text style={styles.rating}>{item.rating}</Text>
         </View>
       </View>
       <Text style={styles.productTitle}>{item.title}</Text>

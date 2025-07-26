@@ -11,5 +11,11 @@ export const globalsStyles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: Colors.baseBlack
+  },
+  textError: {
+    fontSize: 16,
+    fontWeight: 'semibold',
+    color: Colors.baseBlack,
+    marginTop: 20
   }
 });
