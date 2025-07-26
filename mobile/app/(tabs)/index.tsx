@@ -14,6 +14,7 @@ import Header from '@/src/components/common/Header';
 import ProductList from '@/src/components/common/Products/ProductList';
 import Categories from '@/src/components/common/Category/CategoryList';
 import useCategory from '@/src/hooks/useCategory';
+import FlashSale from '@/src/components/common/FlashSale';
 
 type Props = {};
 
@@ -30,7 +31,8 @@ export default function HomeScreen(props: Props) {
   return (
     <>
       <Stack.Screen options={{ headerShown: true, header: () => <Header /> }} />
-       <Categories categories={categories} loading={loadingCategory} />
+      <Categories categories={categories} loading={loadingCategory} />
+      <FlashSale productsSale={products} />
       <ProductList products={products} />
     </>
   );
