@@ -30,12 +30,28 @@ const ApiProvider = ({ children }: { children: React.ReactNode }) => {
           status: axiosError.response?.status || 500
         };
       }
-    },
-    [apiClient]
-  );
+    }, [apiClient]);
+
+  const post = useCallback(
+    async (path: string, params?: any): Promise<ReturnType<any>> => {
+      try {
+        const response = await apiClient.post(path, params);
+
+        return {
+          data: response.data,
+          status: response.status
+        };
+      } catch (error) {
+        const axiosError = error as AxiosError;
+        return {
+          errors: axiosError.response?.data || axiosError.message,
+          status: axiosError.response?.status || 500
+        };
+      }
+    }, [apiClient]);
 
   const contextValue: ApiContextType = {
-    api: { get }
+    api: { get, post }
   };
   return <ApiContext.Provider value={contextValue}>{children}</ApiContext.Provider>;
 };

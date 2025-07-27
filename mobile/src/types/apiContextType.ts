@@ -7,5 +7,6 @@ type ReturnType = {
 export interface ApiContextType {
   api: {
     get: (path: string, params?: any) => Promise<ReturnType>;
+    post: (path: string, params?: any) => Promise<ReturnType>;
   };
 }
