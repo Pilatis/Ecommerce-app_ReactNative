@@ -1,11 +1,12 @@
 {
-  "users": [],
+  "users": [ ],
   "saleProducts": [
     {
       "id": 29,
-      "title": "Mid-Century Modern Wooden Dining Table",
+      "title": "Mesa de Jantar Moderna de Meados do Século em Madeira",
       "price": 24,
-      "description": "Elevate your dining room with this sleek Mid-Century Modern dining table, featuring an elegant walnut finish and tapered legs for a timeless aesthetic. Its sturdy wood construction and minimalist design make it a versatile piece that fits with a variety of decor styles. Perfect for intimate dinners or as a stylish spot for your morning coffee.",
+      "discount": 55,
+      "description": "Eleve sua sala de jantar com esta mesa de jantar moderna de meados do século, apresentando um acabamento elegante em nogueira e pernas afuniladas para uma estética atemporal. Sua construção resistente em madeira e design minimalista a tornam uma peça versátil que combina com vários estilos de decoração. Perfeita para jantares íntimos ou como um local elegante para seu café da manhã.",
       "images": [
         "https://i.imgur.com/DMQHGA0.jpeg",
         "https://i.imgur.com/qrs9QBg.jpeg",
@@ -15,13 +16,16 @@
         "id": 3,
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
-      }
+      },
+      "rating": 4.5,
+      "numberReviews": 74
     },
     {
       "id": 30,
-      "title": "Elegant Golden-Base Stone Top Dining Table",
+      "title": "Mesa de Jantar Elegante com Base Dourada e Tampo de Pedra",
       "price": 66,
-      "description": "Elevate your dining space with this luxurious table, featuring a sturdy golden metal base with an intricate rod design that provides both stability and chic elegance. The smooth stone top in a sleek round shape offers a robust surface for your dining pleasure. Perfect for both everyday meals and special occasions, this table easily complements any modern or glam decor.",
+      "discount": 45,
+      "description": "Eleve seu espaço de jantar com esta mesa luxuosa, apresentando uma base dourada em metal resistente com um design de hastes intrincado que oferece estabilidade e elegância chique. O tampo de pedra lisa em formato redondo proporciona uma superfície robusta para seu prazer gastronômico. Perfeita tanto para refeições cotidianas quanto para ocasiões especiais, esta mesa complementa facilmente qualquer decoração moderna ou glamorosa.",
       "images": [
         "https://i.imgur.com/NWIJKUj.jpeg",
         "https://i.imgur.com/Jn1YSLk.jpeg",
@@ -31,13 +35,16 @@
         "id": 3,
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
-      }
+      },
+      "rating": 4.7,
+      "numberReviews": 124
     },
     {
       "id": 31,
-      "title": "Modern Elegance Teal Armchair",
+      "title": "Poltrona Moderna Elegante em Azul-Turquesa",
       "price": 25,
-      "description": "Elevate your living space with this beautifully crafted armchair, featuring a sleek wooden frame that complements its vibrant teal upholstery. Ideal for adding a pop of color and contemporary style to any room, this chair provides both superb comfort and sophisticated design. Perfect for reading, relaxing, or creating a cozy conversation nook.",
+      "discount": 30,
+      "description": "Eleve seu espaço de convivência com esta poltrona lindamente trabalhada, apresentando uma estrutura em madeira elegante que complementa seu vibrante estofamento azul-turquesa. Ideal para adicionar um toque de cor e estilo contemporâneo a qualquer ambiente, esta cadeira oferece conforto excepcional e design sofisticado. Perfeita para leitura, relaxamento ou criação de um cantinho aconchegante para conversas.",
       "images": [
         "https://i.imgur.com/6wkyyIN.jpeg",
         "https://i.imgur.com/Ald3Rec.jpeg",
@@ -47,13 +54,16 @@
         "id": 3,
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
-      }
+      },
+      "rating": 4.3,
+      "numberReviews": 106
     },
     {
       "id": 32,
-      "title": "Elegant Solid Wood Dining Table",
+      "title": "Mesa de Jantar Elegante em Madeira Maciça",
       "price": 67,
-      "description": "Enhance your dining space with this sleek, contemporary dining table, crafted from high-quality solid wood with a warm finish. Its sturdy construction and minimalist design make it a perfect addition for any home looking for a touch of elegance. Accommodates up to six guests comfortably and includes a striking fruit bowl centerpiece. The overhead lighting is not included.",
+      "discount": 25,
+      "description": "Melhore seu espaço de jantar com esta mesa de jantar contemporânea e elegante, feita de madeira maciça de alta qualidade com acabamento quente. Sua construção resistente e design minimalista a tornam um acréscimo perfeito para qualquer lar que busca um toque de elegância. Acomoda confortavelmente até seis convidados e inclui uma impressionante peça central com frutas. A iluminação suspensa não está incluída.",
       "images": [
         "https://i.imgur.com/4lTaHfF.jpeg",
         "https://i.imgur.com/JktHE1C.jpeg",
@@ -63,13 +73,16 @@
         "id": 3,
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
-      }
+      },
+      "rating": 4.6,
+      "numberReviews": 120
     },
     {
       "id": 33,
-      "title": "Modern Minimalist Workstation Setup",
+      "title": "Configuração de Estação de Trabalho Minimalista Moderna",
       "price": 49,
-      "description": "Elevate your home office with our Modern Minimalist Workstation Setup, featuring a sleek wooden desk topped with an elegant computer, stylish adjustable wooden desk lamp, and complimentary accessories for a clean, productive workspace. This setup is perfect for professionals seeking a contemporary look that combines functionality with design.",
+      "discount": 30,
+      "description": "Eleve seu escritório em casa com nossa Configuração de Estação de Trabalho Minimalista Moderna, apresentando uma mesa de madeira elegante equipada com um computador sofisticado, abajur de mesa ajustável em madeira estiloso e acessórios complementares para um espaço de trabalho limpo e produtivo. Esta configuração é perfeita para profissionais que buscam um visual contemporâneo que combine funcionalidade com design.",
       "images": [
         "https://i.imgur.com/3oXNBst.jpeg",
         "https://i.imgur.com/ErYYZnT.jpeg",
@@ -79,13 +92,16 @@
         "id": 3,
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
-      }
+      },
+      "rating": 4.4,
+      "numberReviews": 55
     },
     {
       "id": 34,
-      "title": "Modern Ergonomic Office Chair",
+      "title": "Cadeira de Escritório Ergonômica Moderna",
       "price": 71,
-      "description": "Elevate your office space with this sleek and comfortable Modern Ergonomic Office Chair. Designed to provide optimal support throughout the workday, it features an adjustable height mechanism, smooth-rolling casters for easy mobility, and a cushioned seat for extended comfort. The clean lines and minimalist white design make it a versatile addition to any contemporary workspace.",
+      "discount": 25,
+      "description": "Eleve seu espaço de escritório com esta cadeira de escritório ergonômica moderna e confortável. Projetada para oferecer suporte ideal durante o dia de trabalho, apresenta um mecanismo de altura ajustável, rodízios de rolagem suave para fácil mobilidade e assento acolchoado para conforto prolongado. As linhas limpas e design minimalista em branco a tornam um acréscimo versátil a qualquer espaço de trabalho contemporâneo.",
       "images": [
         "https://i.imgur.com/3dU0m72.jpeg",
         "https://i.imgur.com/zPU3EVa.jpeg"
@@ -94,13 +110,16 @@
         "id": 3,
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
-      }
+      },
+      "rating": 4.8,
+      "numberReviews": 198
     },
     {
       "id": 35,
-      "title": "Futuristic Holographic Soccer Cleats",
+      "title": "Chuteiras de Futebol Holográficas Futuristas",
       "price": 39,
-      "description": "Step onto the field and stand out from the crowd with these eye-catching holographic soccer cleats. Designed for the modern player, these cleats feature a sleek silhouette, lightweight construction for maximum agility, and durable studs for optimal traction. The shimmering holographic finish reflects a rainbow of colors as you move, ensuring that you'll be noticed for both your skills and style. Perfect for the fashion-forward athlete who wants to make a statement.",
+      "discount": 40,
+      "description": "Entre em campo e destaque-se da multidão com estas chuteiras de futebol holográficas chamativas. Projetadas para o jogador moderno, estas chuteiras apresentam uma silhueta elegante, construção leve para máxima agilidade e travas duráveis para tração ideal. O acabamento holográfico cintilante reflete um arco-íris de cores conforme você se move, garantindo que você será notado tanto por suas habilidades quanto por seu estilo. Perfeito para o atleta fashionista que deseja fazer uma declaração.",
       "images": [
         "https://i.imgur.com/qNOjJje.jpeg",
         "https://i.imgur.com/NjfCFnu.jpeg",
@@ -108,15 +127,18 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Calçados",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
-      }
+      },
+      "rating": 4.9,
+      "numberReviews": 130
     },
     {
       "id": 36,
-      "title": "Rainbow Glitter High Heels",
+      "title": "Saltos Altos com Glitter Arco-Íris",
       "price": 39,
-      "description": "Step into the spotlight with these eye-catching rainbow glitter high heels. Designed to dazzle, each shoe boasts a kaleidoscope of shimmering colors that catch and reflect light with every step. Perfect for special occasions or a night out, these stunners are sure to turn heads and elevate any ensemble.",
+      "discount": 35,
+      "description": "Entre no centro das atenções com estes saltos altos chamativos com glitter arco-íris. Projetados para deslumbrar, cada sapato exibe um caleidoscópio de cores cintilantes que captam e refletem a luz a cada passo. Perfeitos para ocasiões especiais ou uma noite fora, estes saltos impressionantes certamente virarão cabeças e elevarão qualquer conjunto.",
       "images": [
         "https://i.imgur.com/62gGzeF.jpeg",
         "https://i.imgur.com/5MoPuFM.jpeg",
@@ -124,15 +146,18 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Calçados",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
-      }
+      },
+      "rating": 4.7,
+      "numberReviews": 100
     },
     {
       "id": 37,
-      "title": "Chic Summer Denim Espadrille Sandals",
+      "title": "Sandálias Espadrille de Jeans para o Verão",
       "price": 33,
-      "description": "Step into summer with style in our denim espadrille sandals. Featuring a braided jute sole for a classic touch and adjustable denim straps for a snug fit, these sandals offer both comfort and a fashionable edge. The easy slip-on design ensures convenience for beach days or casual outings.",
+      "discount": 50,
+      "description": "Entre no verão com estilo em nossas sandálias espadrille de jeans. Com sola de juta trançada para um toque clássico e tiras de jeans ajustáveis para um caimento perfeito, estas sandálias oferecem conforto e um toque fashion. O design fácil de calçar garante conveniência para dias na praia ou passeios casuais.",
       "images": [
         "https://i.imgur.com/9qrmE1b.jpeg",
         "https://i.imgur.com/wqKxBVH.jpeg",
@@ -140,15 +165,18 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Calçados",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
-      }
+      },
+      "rating": 4.2,
+      "numberReviews": 146
     },
     {
       "id": 38,
-      "title": "Vibrant Runners: Bold Orange & Blue Sneakers",
+      "title": "Tênis Vibrantes: Laranja e Azul",
       "price": 27,
-      "description": "Step into style with these eye-catching sneakers featuring a striking combination of orange and blue hues. Designed for both comfort and fashion, these shoes come with flexible soles and cushioned insoles, perfect for active individuals who don't compromise on style. The reflective silver accents add a touch of modernity, making them a standout accessory for your workout or casual wear.",
+      "discount": 30,
+      "description": "Entre no estilo com estes tênis chamativos que apresentam uma combinação impressionante de tons laranja e azul. Projetados para conforto e moda, estes sapatos vêm com solas flexíveis e palmilhas acolchoadas, perfeitos para indivíduos ativos que não abrem mão do estilo. Os detalhes em prata reflexiva adicionam um toque de modernidade, tornando-os um acessório destacado para seu treino ou uso casual.",
       "images": [
         "https://i.imgur.com/hKcMNJs.jpeg",
         "https://i.imgur.com/NYToymX.jpeg",
@@ -156,9 +184,11 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Calçados",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
-      }
+      },
+      "rating": 4.0,
+      "numberReviews": 330
     }
   ],
   "products": [
@@ -167,6 +197,7 @@
       "title": "Calça de moletom clássica com cordão",
       "price": 79,
       "rating": 4.5,
+      "numberReviews": 210,
       "description": "Experimente a combinação perfeita de conforto e estilo com nossos Joggers Clássicos com Cordão. Projetados para um caimento relaxado, estas calças possuem tecido macio e elástico, bolsos laterais convenientes e cintura com cordão ajustável com detalhes em pontas douradas. Ideal para relaxar ou fazer recados, estas calças rapidamente se tornarão seu favorito para um visual casual sem esforço.",
       "images": [
         "https://i.imgur.com/mp3rUty.jpeg",
@@ -178,7 +209,7 @@
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       }
     },
-     {
+    {
       "id": 8,
       "title": "Calça de moletom vermelha clássica",
       "price": 98,
@@ -193,7 +224,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.7
+      "rating": 4.7,
+      "numberReviews": 336
     },
     {
       "id": 9,
@@ -210,7 +242,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.3
+      "rating": 4.3,
+      "numberReviews": 28
     },
     {
       "id": 11,
@@ -227,7 +260,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.0
+      "rating": 4.0,
+      "numberReviews": 11
     },
     {
       "id": 12,
@@ -244,7 +278,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.2
+      "rating": 4.2,
+      "numberReviews": 49
     },
     {
       "id": 13,
@@ -260,7 +295,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.4
+      "rating": 4.4,
+      "numberReviews": 88
     },
     {
       "id": 14,
@@ -277,7 +313,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.6
+      "rating": 4.6,
+      "numberReviews": 120
     },
     {
       "id": 15,
@@ -294,7 +331,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.1
+      "rating": 4.1,
+      "numberReviews": 235
     },
     {
       "id": 16,
@@ -311,7 +349,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.8
+      "rating": 4.8,
+      "numberReviews": 167
     },
     {
       "id": 17,
@@ -328,7 +367,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.0
+      "rating": 4.0,
+      "numberReviews": 209
     },
     {
       "id": 18,
@@ -345,7 +385,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.9
+      "rating": 4.9,
+      "numberReviews": 120
     },
     {
       "id": 19,
@@ -362,7 +403,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.3
+      "rating": 4.3,
+      "numberReviews": 211
     },
     {
       "id": 21,
@@ -379,7 +421,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.2
+      "rating": 4.2,
+      "numberReviews": 77
     },
     {
       "id": 22,
@@ -396,7 +439,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 3.9
+      "rating": 3.9,
+      "numberReviews": 32
     },
     {
       "id": 23,
@@ -413,7 +457,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.5
+      "rating": 4.5,
+      "numberReviews": 87
     },
     {
       "id": 24,
@@ -430,7 +475,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.7
+      "rating": 4.7,
+      "numberReviews": 81
     },
     {
       "id": 25,
@@ -447,7 +493,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.4
+      "rating": 4.4,
+      "numberReviews": 210
     },
     {
       "id": 26,
@@ -464,7 +511,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 3.8
+      "rating": 3.8,
+      "numberReviews": 144
     },
     {
       "id": 27,
@@ -481,7 +529,8 @@
         "name": "Electronics",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       },
-      "rating": 4.1
+      "rating": 4.1,
+      "numberReviews": 120
     },
     {
       "id": 28,
@@ -498,7 +547,8 @@
         "name": "nuevo",
         "image": "https://i.imgur.com/Qphac99.jpeg"
       },
-      "rating": 4.6
+      "rating": 4.6,
+      "numberReviews": 178
     }
   ],
   "categories": [
@@ -533,29 +583,7 @@
       "image": "https://i.imgur.com/BG8J0Fj.jpg"
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "title": "Classic White T-Shirt",
-      "price": 20,
-      "quantity": 1,
-      "image": "https://i.imgur.com/axsyGpD.jpeg"
-    },
-    {
-      "id": 2,
-      "title": "Sleek Wireless Computer Mouse",
-      "price": 10,
-      "quantity": 1,
-      "image": "https://i.imgur.com/w3Y8NwQ.jpeg"
-    },
-    {
-      "id": 3,
-      "title": "Sleek Smartwatch with Vibrant Display",
-      "price": 16,
-      "quantity": 1,
-      "image":  "https://i.imgur.com/LGk9Jn2.jpeg"
-    }
-  ],
+  "cart": [],
   "notifications": [
     {
       "id": 1,
@@ -565,8 +593,8 @@
     },
     {
       "id": 2,
-      "title": "Payment Received",  
-      "message": "Your payment has been successfully received.",  
+      "title": "Payment Received",
+      "message": "Your payment has been successfully received.",
       "timestamp": "4 hours ago"
     },
     {
@@ -582,5 +610,6 @@
       "timestamp": "5 days ago"
     }
   ],
-  "orders": []
+  "orders": [ ],
+  "wishlist": []
 }
