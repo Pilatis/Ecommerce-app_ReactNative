@@ -18,7 +18,7 @@ export const icon = {
   cart: ({ color }: ColorType) => (
     <Ionicons name="cart-outline" size={22} color={color} />
   ),
-  profile: ({ color }: ColorType) => (
+  profile: () => (
     // <Ionicons name="person-outline" size={22} color={color} />
     <Image source={{ uri: 'https://xsgames.co/randomusers/avatar.php?g=male' }} style={styles.userImage}/>
   )
