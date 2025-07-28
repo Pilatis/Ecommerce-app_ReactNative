@@ -16,11 +16,11 @@ app.use(jsonServer.bodyParser);
 const rules = auth.rewriter({
     users: 600,
     orders: 660,
-    cart: 660,
+    cart: 444,
     products: 444,
     categories: 444,
     saleProducts: 444, 
-    notifications: 660,
+    notifications: 444,
 });
 
 app.use(rules);
