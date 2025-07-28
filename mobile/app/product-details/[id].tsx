@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { CloseTab } from '@/src/components/common/CloseTab';
 import useProducts from '@/src/hooks/useProducts';
@@ -26,11 +32,10 @@ const ProductDetails = (props: Props) => {
 
   if (loadingProductDetail) {
     return (
-
       <View>
-            <ActivityIndicator size="large" color={Colors.primary} />
-          </View>
-          )
+        <ActivityIndicator size="large" color={Colors.primary} />
+      </View>
+    );
   }
 
   return (
@@ -39,7 +44,7 @@ const ProductDetails = (props: Props) => {
         options={{
           headerShown: true,
           headerTitle: 'Produto',
-          headerTitleAlign: 'center',
+          headerTitleAlign: 'center'
           //headerRight: () => <CloseTab />
         }}
       />
@@ -49,11 +54,13 @@ const ProductDetails = (props: Props) => {
             <ImageSlider imageList={productDetails.images} />
 
             <View style={styles.infosContainer}>
-               <HeaderProductDetails productDetails={productDetails} />
+              <HeaderProductDetails productDetails={productDetails} />
 
-                <Text style={styles.description}>{productDetails.description}</Text>
+              <Text style={styles.description}>
+                {productDetails.description}
+              </Text>
 
-                <ProductVariation />
+              <ProductVariation />
             </View>
           </View>
         ) : (
@@ -76,11 +83,11 @@ const styles = StyleSheet.create({
   infosContainer: {
     paddingHorizontal: 20
   },
- 
+
   description: {
     fontSize: 16,
     fontWeight: 400,
     letterSpacing: 0.6,
     lineHeight: 22
-  },
+  }
 });

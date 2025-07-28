@@ -12,6 +12,13 @@ export const globalsStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.baseBlack
   },
+    headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    lineHeight: 24,
+    marginBottom: 10,
+    letterSpacing: 0.8
+  },
   textError: {
     fontSize: 16,
     fontWeight: 'semibold',
