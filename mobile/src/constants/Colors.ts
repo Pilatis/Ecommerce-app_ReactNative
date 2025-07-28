@@ -12,9 +12,11 @@ export const Colors = {
   baseBlack: '#333',
   gray: '#666',
   lightGray: '#999',
+  extraLightGray: '#e4e4e4',
   white: '#fff',
   background: '#f4f4f4',
   highlight: '#f4ce14',
+  star: '#D4AF37',
   light: {
     text: '#11181C',
     background: '#fff',

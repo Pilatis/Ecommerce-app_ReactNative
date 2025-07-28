@@ -6,9 +6,12 @@ import { ProductType } from '../types/dataMock';
 const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
   const { api } = useApi();
   const [products, setProducts] = useState<ProductType[] | null>(null);
+  const [productDetails, setProductDetails] = useState<ProductType | null>(
+    null
+  );
   const [productsSale, setProductsSale] = useState<ProductType[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [loadingProductsSale, setLoadingProductsSale] =
+  const [loadingProductDetail, setLoadingProductDetail] =
     useState<boolean>(false);
 
   const getProducts = useCallback(async (): Promise<void> => {
@@ -27,8 +30,28 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [api]);
 
+  const getProductDetails = useCallback(
+    async (
+      productType: 'products' | 'saleProducts',
+      id: number
+    ): Promise<void> => {
+      setLoadingProductDetail(true);
+
+      try {
+        const response = await api.get(`/${productType}/${id}`);
+
+        if (response.status === 200) {
+          setProductDetails(response.data);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingProductDetail(false);
+      }
+    }, [api]);
+
   const getProductsSale = useCallback(async (): Promise<void> => {
-    setLoadingProductsSale(true);
+    setLoading(true);
 
     try {
       const response = await api.get('/saleProducts');
@@ -39,12 +62,14 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoadingProductsSale(false);
+      setLoading(false);
     }
   }, [api]);
 
   return (
-    <ProductsContext.Provider value={{ getProducts, getProductsSale, productsSale, products, loading }}>
+    <ProductsContext.Provider
+      value={{ getProducts, getProductsSale, getProductDetails, productDetails, productsSale, products, loading, loadingProductDetail }}
+    >
       {children}
     </ProductsContext.Provider>
   );

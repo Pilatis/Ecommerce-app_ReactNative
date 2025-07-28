@@ -53,7 +53,6 @@ export default function TabLayout() {
         name="cart"
         options={{
           title: 'Carrinho',
-          tabBarBadge: 3,
           tabBarIcon: icon.cart
         }}
       />

@@ -11,35 +11,52 @@ import { ProductType } from '@/src/types/dataMock';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/src/constants/Colors';
 import { AnimatedView } from '../animations/AnimatedView';
+//import { Link } from '@react-navigation/native';
+import { Link } from 'expo-router';
 
 type Props = {
   item: ProductType;
   productIndex: number;
+  source?: 'products' | 'sale';
 };
 
 const width = Dimensions.get('window').width - 40;
 
-const ProductItem = ({ item, productIndex: index }: Props) => {
+const ProductItem = ({
+  item,
+  productIndex: index,
+  source = 'products'
+}: Props) => {
   return (
-    <AnimatedView
-      style={styles.container}
-      fadeType="FadeInDown"
-      delay={300 + index * 100}
-      duration={500}
+    <Link
+      href={{
+        pathname: '/product-details/[id]',
+        params: { id: item.id, source }
+      }}
+      asChild
     >
-      <Image source={{ uri: item.images[0] }} style={styles.productImage} />
-      <TouchableOpacity style={styles.bookmarkButton}>
-        <Ionicons name="heart-outline" size={22} color={Colors.baseBlack} />
+      <TouchableOpacity>
+        <AnimatedView
+          style={styles.container}
+          fadeType="FadeInDown"
+          delay={300 + index * 100}
+          duration={500}
+        >
+          <Image source={{ uri: item.images[0] }} style={styles.productImage} />
+          <TouchableOpacity style={styles.bookmarkButton}>
+            <Ionicons name="heart-outline" size={22} color={Colors.baseBlack} />
+          </TouchableOpacity>
+          <View style={styles.productInfo}>
+            <Text style={styles.price}>${item.price}</Text>
+            <View style={styles.ratingBox}>
+              <Ionicons name="star" size={20} color="#D4AF37" />
+              <Text style={styles.rating}>{item.rating}</Text>
+            </View>
+          </View>
+          <Text style={styles.productTitle}>{item.title}</Text>
+        </AnimatedView>
       </TouchableOpacity>
-      <View style={styles.productInfo}>
-        <Text style={styles.price}>${item.price}</Text>
-        <View style={styles.ratingBox}>
-          <Ionicons name="star" size={20} color="#D4AF37" />
-          <Text style={styles.rating}>{item.rating}</Text>
-        </View>
-      </View>
-      <Text style={styles.productTitle}>{item.title}</Text>
-    </AnimatedView>
+    </Link>
   );
 };
 

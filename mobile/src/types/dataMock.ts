@@ -4,8 +4,9 @@ export interface ProductType {
     price: number;
     rating: number;
     discount?: number;
+    numberReviews?: number;
     description: string;
-    images: string[] | string;
+    images: string[];
     category: CategoryProduct
 };
 

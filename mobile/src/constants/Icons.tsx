@@ -21,8 +21,10 @@ export const icon = {
   profile: () => (
     // <Ionicons name="person-outline" size={22} color={color} />
     <Image source={{ uri: 'https://xsgames.co/randomusers/avatar.php?g=male' }} style={styles.userImage}/>
-  )
-};
+  ),
+  'product-details/[id]': () => undefined,
+  default: () => undefined
+} as const;
 
 const styles = StyleSheet.create({
   userImage: {
