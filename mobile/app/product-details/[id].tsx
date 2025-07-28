@@ -3,15 +3,12 @@ import {
   ActivityIndicator,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from 'react-native';
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { CloseTab } from '@/src/components/common/CloseTab';
 import useProducts from '@/src/hooks/useProducts';
 import ImageSlider from '@/src/components/common/ProductDetails/ImageSlider';
 import { globalsStyles } from '@/src/styles/globals';
-import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/src/constants/Colors';
 import HeaderProductDetails from '@/src/components/common/ProductDetails/HeaderProductDetails';
 import ProductVariation from '@/src/components/common/ProductDetails/ProductVariation';

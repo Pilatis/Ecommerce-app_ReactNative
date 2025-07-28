@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
-import { StyleSheet, View, Text, ActivityIndicator, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList
+} from 'react-native';
 import { Stack } from 'expo-router';
 import AnimatedText from '@/src/components/common/animations/AnimatedText';
 import useCategory from '@/src/hooks/useCategory';
@@ -25,24 +31,30 @@ export default function Explore() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        <AnimatedText fadeType="FadeInDown" style={globalsStyles.headerTitle}>
+        <AnimatedText
+          fadeType="FadeInDown"
+          style={[
+            globalsStyles.headerTitle,
+            { textAlign: 'center', marginBottom: 10 }
+          ]}
+        >
           Explore
         </AnimatedText>
         {categories && !loading ? (
-          <FlatList data={categories} keyExtractor={(item) => item.id.toString()} renderItem={({ item, index }: { item: CategoryType, index: number }) => (
-            <ExploreCategoryCard category={item} index={index} />
-          )} style={styles.categoryList} />
-          // <View style={styles.categoryList}>
-          //   {categories?.map((category: CategoryType, index: number) => (
-          //     <ExploreCategoryCard
-          //       key={category.id}
-          //       category={category}
-          //       index={index}
-          //     />
-          //   ))}
-          // </View>
+          <FlatList
+            data={categories}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({
+              item,
+              index
+            }: {
+              item: CategoryType;
+              index: number;
+            }) => <ExploreCategoryCard category={item} index={index} />}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.categoryList}
+          />
         ) : (
           <Text>Não foi possível exibir as categorias.</Text>
         )}
@@ -53,10 +65,12 @@ export default function Explore() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginTop: 35,
+    justifyContent: 'center',
+    paddingBottom: 30
   },
   categoryList: {
-    justifyContent: 'center',
-    gap: 15
+    gap: 20
   }
 });
