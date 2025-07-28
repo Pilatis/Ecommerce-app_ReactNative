@@ -14,7 +14,6 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
           <ProductsProvider>
             <CategoryProvider>
               <NotificationProvider>
-
               {children}
               </NotificationProvider>
               </CategoryProvider>

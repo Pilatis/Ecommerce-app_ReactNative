@@ -6,5 +6,7 @@ export interface NotificationType {
 }
 
 export interface NotificationContextType {
-
+  getNotifications: () => Promise<void>;
+  notifications: NotificationType[] | null;
+  loading: boolean;
 }
