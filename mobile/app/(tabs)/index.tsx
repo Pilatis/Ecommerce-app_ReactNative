@@ -4,7 +4,8 @@ import {
   View,
   Image,
   ActivityIndicator,
-  ScrollView
+  ScrollView,
+  Text
 } from 'react-native';
 import { Stack } from 'expo-router';
 import useProducts from '@/src/hooks/useProducts';
@@ -15,44 +16,47 @@ import useCategory from '@/src/hooks/useCategory';
 import FlashSale from '@/src/components/common/FlashSale/FlashSaleList';
 import { Colors } from '@/src/constants/Colors';
 import { AnimatedView } from '@/src/components/common/animations/AnimatedView';
+import { globalsStyles } from '@/src/styles/globals';
+import StatusHandler from '@/src/components/common/StatusHandler';
 
 type Props = {};
 
 export default function HomeScreen(props: Props) {
-  const { getProducts, getProductsSale, productsSale, products, loading } =
-    useProducts();
+  const {
+    getProducts,
+    getProductsSale,
+    productsSale,
+    products,
+    loading,
+    error
+  } = useProducts();
   const { getCategories, categories, loading: loadingCategory } = useCategory();
+
+  const notProducts = !products?.length || !productsSale?.length
 
   useEffect(() => {
     getProducts();
     getCategories();
     getProductsSale();
-    console.log('chamando');
   }, []);
-
-  if (loading) {
-    return (
-      <View>
-        <ActivityIndicator size="large" color={Colors.primary} />
-      </View>
-    );
-  }
 
   return (
     <>
       <Stack.Screen options={{ headerShown: true, header: () => <Header /> }} />
 
-      <ScrollView>
-        <Categories categories={categories} loading={loadingCategory} />
-        <FlashSale productsSale={productsSale} />
-        <AnimatedView style={styles.banner} fadeType="FadeInDown" delay={600}>
-          <Image
-            source={require('@/assets/images/sale-banner.png')}
-            style={styles.bannerImage}
-          />
-        </AnimatedView>
-        <ProductList products={products} loading={loading} />
-      </ScrollView>
+      <StatusHandler loading={loading} error={error} empty={notProducts}>
+        <ScrollView>
+          <Categories categories={categories} loading={loadingCategory} />
+          <FlashSale productsSale={productsSale} loading={loading} />
+          <AnimatedView style={styles.banner} fadeType="FadeInDown" delay={600}>
+            <Image
+              source={require('@/assets/images/sale-banner.png')}
+              style={styles.bannerImage}
+            />
+          </AnimatedView>
+          <ProductList products={products} loading={loading} error={error} />
+        </ScrollView>
+      </StatusHandler>
     </>
   );
 }

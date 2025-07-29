@@ -3,6 +3,8 @@ import ApiContext from '../contexts/ApiContext';
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import { ApiContextType } from '../types/apiContextType';
 
+import { Platform } from 'react-native';
+
 const ApiProvider = ({ children }: { children: React.ReactNode }) => {
   const apiBaseURL = 'http://10.0.2.2:3001';
   const apiClient: AxiosInstance = axios.create({

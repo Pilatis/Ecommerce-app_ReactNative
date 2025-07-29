@@ -6,19 +6,20 @@ import {
   Text,
   TouchableOpacity,
   View,
-  FlatList
 } from 'react-native';
 import ProductItem from './ProductItem';
+import StatusHandler from '../StatusHandler';
 
 type Props = {
   products: ProductType[] | null;
   loading: boolean;
+  error: boolean;
 };
 
-const ProductList = ({ products, loading }: Props) => {
+const ProductList = ({ products, loading, error }: Props) => {
   return (
-    <View style={styles.container}>
-      {products && !loading ? (
+    <StatusHandler loading={loading} error={error} empty={!products?.length}>
+      <View style={styles.container}>
         <View>
           <View style={styles.titleHeader}>
             <Text style={styles.title}>Para você</Text>
@@ -27,33 +28,17 @@ const ProductList = ({ products, loading }: Props) => {
             </TouchableOpacity>
           </View>
 
-          {/* <FlatList
-            data={products}
-            numColumns={2}
-            columnWrapperStyle={{
-              justifyContent: 'space-between',
-              marginBottom: 10
-            }}
-            keyExtractor={(item: ProductType) => item.id.toString()}
-            renderItem={({ index, item }) => (
-              <ProductItem key={item.id} item={item} productIndex={index} />
-            )}
-            />
-     */}
           <View style={styles.productList}>
-            {products.map((product: ProductType, index: number) => (
-              <View key={product.id} style={styles.product}>
-                <ProductItem item={product} productIndex={index} />
-              </View>
-            ))}
+            {products &&
+              products.map((product: ProductType, index: number) => (
+                <View key={product.id} style={styles.product}>
+                  <ProductItem item={product} productIndex={index} />
+                </View>
+              ))}
           </View>
         </View>
-      ) : (
-        <Text style={styles.textError}>
-          Não foi possível carregar os produtos
-        </Text>
-      )}
-    </View>
+      </View>
+    </StatusHandler>
   );
 };
 

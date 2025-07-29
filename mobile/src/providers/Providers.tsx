@@ -13,10 +13,10 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         <AuthProvider>
           <ProductsProvider>
             <CategoryProvider>
-              <NotificationProvider>
-              {children}
-              </NotificationProvider>
+              <CategoryProvider>
+                <NotificationProvider>{children}</NotificationProvider>
               </CategoryProvider>
+            </CategoryProvider>
           </ProductsProvider>
         </AuthProvider>
       </ApiProvider>

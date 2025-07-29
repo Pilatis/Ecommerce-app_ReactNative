@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: Colors.extraLightGray,
-    borderRadius: 10,
+    borderRadius: 5,
     gap: 10
   },
   notificationBox: {
     justifyContent: 'flex-start',
-    gap: 10
+    gap: 7
   },
   notificationTitle: {
     fontSize: 16,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   notificationInfo: {},
   timestampBox: {
     position: 'absolute',
-    left: 10,
+    right: 10,
     top: 15
   },
   timestampText: {

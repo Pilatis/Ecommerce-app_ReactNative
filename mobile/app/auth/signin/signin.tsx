@@ -26,7 +26,7 @@ const SignInScreen = (props: Props) => {
           style={[styles.title, globalsStyles.defaultTitle]}
           fadeType="FadeInRight"
         >
-          Entrar
+          Entrar na sua conta
         </AnimatedText>
         <SignInForm />
 

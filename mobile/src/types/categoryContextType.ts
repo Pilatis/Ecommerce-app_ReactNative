@@ -4,4 +4,5 @@ export interface CategoryContextType {
     getCategories: () => Promise<void>
     categories: CategoryProduct[] | null;
     loading: boolean;
+    error: boolean
 }

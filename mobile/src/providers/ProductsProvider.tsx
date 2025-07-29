@@ -13,18 +13,23 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingProductDetail, setLoadingProductDetail] =
     useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const getProducts = useCallback(async (): Promise<void> => {
     setLoading(true);
+    setError(false);
 
     try {
       const response = await api.get('/products');
 
       if (response.status === 200) {
         setProducts(response.data);
+      } else {
+        setError(true);
       }
     } catch (error) {
       console.error(error);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -34,7 +39,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
     async (
       productType: 'products' | 'saleProducts',
       id: number
-    ): Promise<void> => {
+    ): Promise<ProductType | null> => {
       setLoadingProductDetail(true);
 
       try {
@@ -42,13 +47,17 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (response.status === 200) {
           setProductDetails(response.data);
+          return response.data;
+        } else {
+          return null
         }
       } catch (error) {
         console.error(error);
+        return null;
       } finally {
         setLoadingProductDetail(false);
       }
-    }, [api]);
+    }, [api, productDetails]);
 
   const getProductsSale = useCallback(async (): Promise<void> => {
     setLoading(true);
@@ -68,7 +77,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ getProducts, getProductsSale, getProductDetails, productDetails, productsSale, products, loading, loadingProductDetail }}
+      value={{ getProducts, getProductsSale, getProductDetails, productDetails, productsSale, products, loading, loadingProductDetail, error }}
     >
       {children}
     </ProductsContext.Provider>

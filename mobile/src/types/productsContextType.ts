@@ -3,10 +3,11 @@ import { ProductType } from "./dataMock";
 export interface ProductsContextType {
     getProducts: () => Promise<void>;
     getProductsSale: () => Promise<void>;
-    getProductDetails: (productType: 'products' | 'saleProducts', id: number) => Promise<void>;
+    getProductDetails: (productType: 'products' | 'saleProducts', id: number) => Promise<ProductType | null>;
     productDetails: ProductType | null;
     productsSale: ProductType[] | null;
     products: ProductType[] | null;
     loading: boolean;
     loadingProductDetail: boolean;
+    error: boolean;
 }

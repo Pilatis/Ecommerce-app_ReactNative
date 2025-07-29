@@ -7,6 +7,7 @@ const CategoryProvider = ({ children }: { children: React.ReactNode }) => {
   const { api } = useApi();
   const [categories, setCategories] = useState<CategoryProduct[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const getCategories = useCallback(async () => {
     setLoading(true);
@@ -16,15 +17,18 @@ const CategoryProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (response.status === 200) {
         setCategories(response.data);
+      } else {
+        setError(true)
       }
     } catch (error) {
       console.error(error);
+      setError(false);
     } finally {
       setLoading(false);
     }
   }, [api]);
   return (
-    <CategoryContext.Provider value={{ getCategories, categories, loading }}>{children}</CategoryContext.Provider>
+    <CategoryContext.Provider value={{ getCategories, categories, loading, error }}>{children}</CategoryContext.Provider>
   );
 };
 

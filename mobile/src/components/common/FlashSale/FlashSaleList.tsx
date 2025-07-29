@@ -14,6 +14,7 @@ import FlashSaleItem from './FlashSaleItem';
 
 type Props = {
   productsSale: ProductType[] | null;
+  loading: boolean;
 };
 
 type Timer = {
@@ -23,7 +24,7 @@ type Timer = {
   seconds: number;
 };
 
-const FlashSale = ({ productsSale }: Props) => {
+const FlashSale = ({ productsSale, loading }: Props) => {
   const [timeUnits, setTimeUnits] = useState<Timer>({
     days: 0,
     hours: 0,
@@ -72,44 +73,38 @@ const FlashSale = ({ productsSale }: Props) => {
 
   return (
     <>
-      {productsSale ? (
-        <View style={styles.container}>
-          <View style={styles.titleHeader}>
-            <View style={styles.timerBox}>
-              <Text style={styles.title}>Promoções</Text>
-              <View style={styles.timer}>
-                <Ionicons
-                  name="time-outline"
-                  size={16}
-                  color={Colors.baseBlack}
-                />
-                <Text style={styles.timerText}>
-                  {`${formatTime(timeUnits.days).padEnd(1, '0')}`}:
-                  {`${formatTime(timeUnits.hours)}`}:
-                  {`${formatTime(timeUnits.minutes)}`}:
-                  {`${formatTime(timeUnits.seconds)}`}
-                </Text>
-              </View>
+      <View style={styles.container}>
+        <View style={styles.titleHeader}>
+          <View style={styles.timerBox}>
+            <Text style={styles.title}>Promoções</Text>
+            <View style={styles.timer}>
+              <Ionicons
+                name="time-outline"
+                size={16}
+                color={Colors.baseBlack}
+              />
+              <Text style={styles.timerText}>
+                {`${formatTime(timeUnits.days).padEnd(1, '0')}`}:
+                {`${formatTime(timeUnits.hours)}`}:
+                {`${formatTime(timeUnits.minutes)}`}:
+                {`${formatTime(timeUnits.seconds)}`}
+              </Text>
             </View>
-            <TouchableOpacity>
-              <Text style={styles.titleButton}>Ver tudo</Text>
-            </TouchableOpacity>
           </View>
-          <FlatList
-            data={productsSale}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item, index }) => (
-              <FlashSaleItem key={item.id} item={item} index={index} />
-            )}
-          />
+          <TouchableOpacity>
+            <Text style={styles.titleButton}>Ver tudo</Text>
+          </TouchableOpacity>
         </View>
-      ) : (
-        <Text style={globalsStyles.textError}>
-          Não foi possível carregar suas promoções
-        </Text>
-      )}
+        <FlatList
+          data={productsSale}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item, index }) => (
+            <FlashSaleItem key={item.id} item={item} index={index} />
+          )}
+        />
+      </View>
     </>
   );
 };
@@ -119,7 +114,7 @@ export default FlashSale;
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 20
   },
   timerBox: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   timer: {
@@ -139,7 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 20
   },
   title: {
     fontSize: 18,

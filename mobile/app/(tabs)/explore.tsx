@@ -2,46 +2,39 @@ import { useEffect } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  ActivityIndicator,
   FlatList
 } from 'react-native';
 import { Stack } from 'expo-router';
-import AnimatedText from '@/src/components/common/animations/AnimatedText';
 import useCategory from '@/src/hooks/useCategory';
 import { CategoryType } from '@/src/types/dataMock';
 import ExploreCategoryCard from '@/src/components/common/ExploreCategoryCard';
-import { Colors } from '@/src/constants/Colors';
-import { globalsStyles } from '@/src/styles/globals';
+import StatusHandler from '@/src/components/common/StatusHandler';
 
 export default function Explore() {
-  const { getCategories, categories, loading } = useCategory();
+  const { getCategories, categories, loading, error } = useCategory();
 
   useEffect(() => {
-    getCategories();
+    if (categories?.length === 0) {
+      getCategories();
+    }
   }, []);
-
-  if (loading) {
-    return (
-      <View>
-        <ActivityIndicator size="large" color={Colors.primary} />
-      </View>
-    );
-  }
 
   return (
     <>
-      <View style={styles.container}>
-        <AnimatedText
-          fadeType="FadeInDown"
-          style={[
-            globalsStyles.headerTitle,
-            { textAlign: 'center', marginBottom: 10 }
-          ]}
-        >
-          Explore
-        </AnimatedText>
-        {categories && !loading ? (
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTitle: 'Explore',
+          headerTitleAlign: 'center'
+        }}
+      />
+
+      <StatusHandler
+        loading={loading}
+        error={error}
+        empty={!categories?.length}
+      >
+        <View style={styles.container}>
           <FlatList
             data={categories}
             keyExtractor={(item) => item.id.toString()}
@@ -55,10 +48,8 @@ export default function Explore() {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.categoryList}
           />
-        ) : (
-          <Text>Não foi possível exibir as categorias.</Text>
-        )}
-      </View>
+        </View>
+      </StatusHandler>
     </>
   );
 }
@@ -66,9 +57,7 @@ export default function Explore() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    marginTop: 35,
-    justifyContent: 'center',
-    paddingBottom: 30
+    marginTop: 10
   },
   categoryList: {
     gap: 20

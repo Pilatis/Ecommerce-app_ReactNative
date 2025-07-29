@@ -9,6 +9,7 @@ import {
   ViewToken
 } from 'react-native';
 import Pagination from './Pagination';
+import { AnimatedView } from '../animations/AnimatedView';
 
 type Props = {
   imageList: string[];
@@ -40,7 +41,7 @@ const ImageSlider = ({ imageList }: Props) => {
     { viewabilityConfig, onViewableItemsChanged }
   ]);
   return (
-    <View>
+    <AnimatedView fadeType="FadeInDown" delay={300}>
       <FlatList
         data={imageList}
         renderItem={({ item }: { item: string }) => (
@@ -55,7 +56,7 @@ const ImageSlider = ({ imageList }: Props) => {
         pagingEnabled
       />
       <Pagination items={imageList} paginationIndex={paginationIndex} />
-    </View>
+    </AnimatedView>
   );
 };
 
