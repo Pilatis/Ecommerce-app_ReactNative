@@ -31,14 +31,16 @@ const CategoryProducts = (props: Props) => {
   const headerHeight = useHeaderHeight();
 
   useEffect(() => {
-    if (!products?.length || !productsSale?.length) {
+    if (!products || !productsSale) {
       getProducts();
       getProductsSale();
     }
   }, []);
 
   const categoryName = typeof category === 'string' ? category : '';
-  const allProducts = [...(products || []), ...(productsSale || [])];
+  const markedProducts = (products || []).map((product) => ({ ...product, source: 'products' }));
+  const markedSaleProducts = (productsSale || []).map((product) => ({ ...product, source: 'sale' }))
+  const allProducts = [...markedProducts, ...markedSaleProducts];
 
   return (
     <>

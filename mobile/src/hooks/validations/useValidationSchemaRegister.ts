@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 export const useValidationSchema = () => {
   const schema = yup.object().shape({
-    name: yup
+    username: yup
       .string()
       .required('Nome é obrigatório')
       .min(3, 'Nome deve ter pelo menos 3 caracteres')
@@ -27,5 +27,5 @@ export const useValidationSchema = () => {
       .oneOf([yup.ref('password')], 'Senhas não coincidem')
   });
 
-  return { schema };
+  return schema;
 };

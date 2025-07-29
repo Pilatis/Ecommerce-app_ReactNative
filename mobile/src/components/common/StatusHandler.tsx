@@ -7,10 +7,11 @@ type Props = {
   loading: boolean;
   error?: boolean;
   empty?: boolean;
+  emptyText?: string;
   children: React.ReactNode;
 };
 
-const StatusHandler = ({ loading, error, empty, children }: Props) => {
+const StatusHandler = ({ loading, error, empty, emptyText, children }: Props) => {
   if (loading) {
     return (
       <View style={{ marginTop: 5 }}>
@@ -33,7 +34,7 @@ const StatusHandler = ({ loading, error, empty, children }: Props) => {
     return (
       <View style={styles.center}>
         <Text style={[globalsStyles.textError, { textAlign: 'center' }]}>
-          Nenhum conteúdo encontrado.
+          {emptyText || 'Nenhum conteúdo encontrado.'}
         </Text>
       </View>
     );

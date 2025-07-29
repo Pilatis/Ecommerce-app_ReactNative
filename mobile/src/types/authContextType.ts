@@ -14,5 +14,7 @@ export interface LoginData {
 }
 
 export interface AuthContextType {
-    isAuthenticated: boolean
+    isAuthenticated: boolean;
+    createUser: (data: CreateUserData) => Promise<void>;
+    login: (data: LoginData) => Promise<void>;
 }

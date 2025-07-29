@@ -47,6 +47,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
 
         if (response.status === 200) {
           setProductDetails(response.data);
+          console.log('Não encontrado',response.data)
           return response.data;
         } else {
           return null

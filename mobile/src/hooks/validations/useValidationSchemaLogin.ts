@@ -19,5 +19,5 @@ export const useValidationSchema = () => {
       .min(6, 'A senha deve conter no mínimo 6 caracters')
   });
 
-  return { schema };
+  return schema;
 };

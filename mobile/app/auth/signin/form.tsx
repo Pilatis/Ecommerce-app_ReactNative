@@ -3,12 +3,20 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { AnimatedView } from '@/src/components/common/animations/AnimatedView';
 import InputField from '@/src/components/common/form/InputField';
 import { Colors } from '@/src/constants/Colors';
+import { Formik, Form } from 'formik';
 import { router } from 'expo-router';
+import { useValidationSchema } from '@/src/hooks/validations/useValidationSchemaLogin';
+import { LoginData } from '@/src/types/authContextType';
+import { useAuth } from '@/src/hooks/useAuth';
 
 const SignInForm = () => {
-  const onSubmit = () => {
-    router.push('/(tabs)')
-  }
+  const validationSchema = useValidationSchema();
+  const { login } = useAuth();
+
+  const onSubmit = (values: LoginData) => {
+    console.log('Form submitted:', values);
+    //router.push('/(tabs)')
+  };
 
   return (
     <AnimatedView
@@ -17,15 +25,45 @@ const SignInForm = () => {
       delay={300}
       duration={300}
     >
-      <InputField placeholder="E-mail" placeholderTextColor={Colors.gray} />
-      <InputField
-        placeholder="Senha"
-        placeholderTextColor={Colors.gray}
-        secureTextEntry={true}
-      />
-      <TouchableOpacity onPress={onSubmit} style={styles.button}>
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ handleChange, handleSubmit, values, errors, touched }) => (
+          <>
+            <InputField
+              placeholder="E-mail"
+              placeholderTextColor={Colors.gray}
+              onChangeText={handleChange('email')}
+              value={values.email}
+              error={touched.email && errors.email ? errors.email : undefined}
+              touched={touched.email}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <InputField
+              placeholder="Senha"
+              placeholderTextColor={Colors.gray}
+              secureTextEntry={true}
+              onChangeText={handleChange('password')}
+              error={
+                touched.password && errors.password
+                  ? errors.password
+                  : undefined
+              }
+              value={values.password}
+              touched={touched.password}
+            />
+            <TouchableOpacity
+              onPress={() => handleSubmit()}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+          </>
+        )}
+      </Formik>
     </AnimatedView>
   );
 };

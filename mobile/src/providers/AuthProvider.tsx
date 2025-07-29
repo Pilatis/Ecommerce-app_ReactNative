@@ -22,7 +22,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const response = await api.post('/users', data);
 
     if (response.status === 200) {
-      setUser(response.data)
+      setUser(response.data);
+      alert('Conta criada com sucesso')
+      console.log(response.data);
+    } else {
+      alert('Não foi possível criar sua conta')
     }
    } catch (error) {
      console.error(error)
@@ -42,6 +46,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         await AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(userData));
         setUser(userData);
         setIsAuthenticated(true);
+      } else {
+        alert('Não foi possível fazer o login');
       }
     } catch (error) {
       console.error('Error in starting login:', error);
@@ -55,7 +61,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated }}>
+    <AuthContext.Provider value={{ isAuthenticated, createUser, login }}>
       {children}
     </AuthContext.Provider>
   );

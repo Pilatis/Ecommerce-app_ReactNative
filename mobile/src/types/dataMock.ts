@@ -7,7 +7,8 @@ export interface ProductType {
     numberReviews?: number;
     description: string;
     images: string[];
-    category: CategoryProduct
+    category: CategoryProduct;
+    source?: string;
 };
 
 export interface CategoryProduct {

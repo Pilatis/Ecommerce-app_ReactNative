@@ -10,7 +10,7 @@ import { CategoryType } from '@/src/types/dataMock';
 import ExploreCategoryCard from '@/src/components/common/ExploreCategoryCard';
 import StatusHandler from '@/src/components/common/StatusHandler';
 
-export default function Explore() {
+export default function ExploreScree() {
   const { getCategories, categories, loading, error } = useCategory();
 
   useEffect(() => {

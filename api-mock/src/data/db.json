@@ -1,5 +1,12 @@
 {
-  "users": [ ],
+  "users": [
+    {
+      "email": "pialti@gmail.com",
+      "password": "$2a$10$a5Lvmj7FZAzpkos9Y2bNd./wuNCh3AtEjoxmYtdnJWmuHdfpCiZ.6",
+      "username": "lucas",
+      "id": 1
+    }
+  ],
   "saleProducts": [
     {
       "id": 29,
@@ -187,7 +194,7 @@
         "name": "Shoes",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
       },
-      "rating": 4.0,
+      "rating": 4,
       "numberReviews": 330
     }
   ],
@@ -260,7 +267,7 @@
         "name": "Clothes",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.0,
+      "rating": 4,
       "numberReviews": 11
     },
     {
@@ -367,7 +374,7 @@
         "name": "Clothes",
         "image": "https://i.imgur.com/QkIa5tT.jpeg"
       },
-      "rating": 4.0,
+      "rating": 4,
       "numberReviews": 209
     },
     {
@@ -551,7 +558,7 @@
       "numberReviews": 178
     }
   ],
-   "categories": [
+  "categories": [
     {
       "id": 1,
       "name": "Clothes",
@@ -610,6 +617,6 @@
       "timestamp": "5 days ago"
     }
   ],
-  "orders": [ ],
+  "orders": [],
   "wishlist": []
 }

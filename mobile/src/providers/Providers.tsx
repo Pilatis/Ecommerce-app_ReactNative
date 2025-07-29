@@ -5,6 +5,7 @@ import AuthProvider from './AuthProvider';
 import ProductsProvider from './ProductsProvider';
 import CategoryProvider from './CategoryProvider';
 import NotificationProvider from './NotificationProvider';
+import CartProvider from './CartProvider';
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,7 +15,10 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
           <ProductsProvider>
             <CategoryProvider>
               <CategoryProvider>
+                <CartProvider>
+
                 <NotificationProvider>{children}</NotificationProvider>
+                </CartProvider>
               </CategoryProvider>
             </CategoryProvider>
           </ProductsProvider>

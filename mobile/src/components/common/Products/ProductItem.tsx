@@ -17,7 +17,7 @@ import { Link } from 'expo-router';
 type Props = {
   item: ProductType;
   productIndex: number;
-  source?: 'products' | 'sale';
+  source?: 'products' | 'sale' | string;
 };
 
 const width = Dimensions.get('window').width - 40;

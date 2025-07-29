@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { Alert, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import useProducts from '@/src/hooks/useProducts';
 import ImageSlider from '@/src/components/common/ProductDetails/ImageSlider';
 import HeaderProductDetails from '@/src/components/common/ProductDetails/HeaderProductDetails';
@@ -14,24 +8,68 @@ import ProductVariation from '@/src/components/common/ProductDetails/ProductVari
 import StatusHandler from '@/src/components/common/StatusHandler';
 import AnimatedText from '@/src/components/common/animations/AnimatedText';
 import { ProductType } from '@/src/types/dataMock';
-import { useHeaderHeight } from '@react-navigation/elements';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/src/constants/Colors';
 import FooterProductDetails from '@/src/components/common/ProductDetails/FooterProductDetails';
+import useCart from '@/src/hooks/useCart';
 
 type Props = {};
 
 const ProductDetails = (props: Props) => {
   const { id, source } = useLocalSearchParams<{ id: string; source: string }>();
-  const headerHeight = useHeaderHeight();
   const { getProductDetails, loadingProductDetail, error } = useProducts();
+  const {
+    getCartItems,
+    postCartItem,
+    cartItems,
+    loading,
+    error: errorCart
+  } = useCart();
   const [product, setProduct] = useState<ProductType | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string>('');
+  const [selectedSize, setSelectedSize] = useState<string>('');
 
   const handleProductType = source === 'sale' ? 'saleProducts' : 'products';
+
+  const onRemoveCartItem = () => {};
+
+  const onAddToCart = async () => {
+    if (
+      !product ||
+      !selectedColor ||
+      product.category.name === 'Clothes' ||
+      (product.category.name === 'Shoes' && !selectedSize)
+    ) {
+      alert('Selecione cor e tamanho antes de adicionar ao carrinho.');
+      return;
+    }
+
+    const newItem = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      color: selectedColor,
+      size: selectedSize,
+      image: product.images[0]
+    };
+
+    const response = await postCartItem(newItem);
+
+    if (response === 'success') {
+      alert('Item Adicionado no carrinho com sucesso')
+    }
+  };
+
+  const onBuyNow = () => {
+    onAddToCart();
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getProductDetails(handleProductType, Number(id));
+
+      console.log(response);
 
       setProduct(response);
     };
@@ -48,12 +86,16 @@ const ProductDetails = (props: Props) => {
           headerTitleAlign: 'center',
           headerRight: () => (
             <TouchableOpacity>
-              <Ionicons name="cart-outline" size={24} color={Colors.baseBlack} /> 
+              <Ionicons
+                name="cart-outline"
+                size={24}
+                color={Colors.baseBlack}
+              />
             </TouchableOpacity>
           )
         }}
       />
-      <ScrollView style={{ marginTop: headerHeight, marginBottom: 90 }}>
+      <ScrollView style={{ marginBottom: 90 }}>
         <View style={styles.container}>
           <StatusHandler
             loading={loadingProductDetail}
@@ -74,14 +116,18 @@ const ProductDetails = (props: Props) => {
                     {product.description}
                   </AnimatedText>
 
-                  <ProductVariation category={product.category.name} />
+                  <ProductVariation
+                    category={product.category.name}
+                    setSelectedColor={setSelectedColor}
+                    setSelectedSize={setSelectedSize}
+                  />
                 </View>
               </View>
             )}
           </StatusHandler>
         </View>
       </ScrollView>
-     <FooterProductDetails />
+      <FooterProductDetails onAddToCart={onAddToCart} onBuyNow={onBuyNow} />
     </>
   );
 };
@@ -101,5 +147,5 @@ const styles = StyleSheet.create({
     fontWeight: 400,
     letterSpacing: 0.6,
     lineHeight: 22
-  },
+  }
 });

@@ -1,15 +1,18 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Colors } from '@/src/constants/Colors';
-import { Ionicons } from '@expo/vector-icons';
 import { AnimatedView } from '../animations/AnimatedView';
 
-type Props = {};
+type Props = {
+  onAddToCart: () => void;
+  onBuyNow: () => void;
+};
 
-const FooterProductDetails = (props: Props) => {
+const FooterProductDetails = ({ onAddToCart, onBuyNow }: Props) => {
   return (
     <AnimatedView fadeType="FadeInDown" delay={500} duration={500} style={styles.container}>
       <TouchableOpacity
+        onPress={onAddToCart}
         style={[
           styles.button,
           {
@@ -19,12 +22,12 @@ const FooterProductDetails = (props: Props) => {
           }
         ]}
       >
-        <Ionicons name="cart-outline" size={20} color={Colors.primary} />
+        
         <Text style={[styles.buttonText, { color: Colors.primary }]}>
           Adicionar ao carrinho
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={onBuyNow} style={styles.button}>
         <Text style={styles.buttonText}>Comprar agora</Text>
       </TouchableOpacity>
     </AnimatedView>

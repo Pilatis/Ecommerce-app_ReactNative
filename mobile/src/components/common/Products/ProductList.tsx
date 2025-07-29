@@ -32,7 +32,7 @@ const ProductList = ({ products, loading, error }: Props) => {
             {products &&
               products.map((product: ProductType, index: number) => (
                 <View key={product.id} style={styles.product}>
-                  <ProductItem item={product} productIndex={index} />
+                  <ProductItem item={product} productIndex={index} source={product.source} />
                 </View>
               ))}
           </View>
