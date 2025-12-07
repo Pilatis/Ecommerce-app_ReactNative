@@ -8,14 +8,28 @@ import { router } from 'expo-router';
 import { useValidationSchema } from '@/src/hooks/validations/useValidationSchemaLogin';
 import { LoginData } from '@/src/types/authContextType';
 import { useAuth } from '@/src/hooks/useAuth';
+import Toast from 'react-native-toast-message';
 
 const SignInForm = () => {
   const validationSchema = useValidationSchema();
   const { login } = useAuth();
 
-  const onSubmit = (values: LoginData) => {
+  const onSubmit = async (values: LoginData) => {
     console.log('Form submitted:', values);
-    //router.push('/(tabs)')
+    const formatData = {
+      email: values.email,
+      password: values.password
+    }
+
+    const response = await login(formatData)
+
+    if (response === 'success') {
+      Toast.show({
+        type: 'success',
+        text1: 'Bem vindo a Shoply'
+      })
+      router.push('/(tabs)')
+    }
   };
 
   return (

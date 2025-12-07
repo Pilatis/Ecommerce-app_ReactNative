@@ -8,7 +8,7 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
-
+import Toast from 'react-native-toast-message';
 import { useColorScheme } from '@/src/hooks/useColorScheme';
 import Providers from '@/src/providers/Providers';
 import { useAuth } from '@/src/hooks/useAuth';
@@ -55,6 +55,7 @@ export default function RootLayout() {
           )}
         </Stack>
         <StatusBar style="auto" />
+        <Toast />
       </ThemeProvider>
     </Providers>
   );

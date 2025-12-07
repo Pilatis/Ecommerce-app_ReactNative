@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import useProducts from '@/src/hooks/useProducts';
 import ImageSlider from '@/src/components/common/ProductDetails/ImageSlider';
@@ -12,11 +18,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/src/constants/Colors';
 import FooterProductDetails from '@/src/components/common/ProductDetails/FooterProductDetails';
 import useCart from '@/src/hooks/useCart';
+import Toast from 'react-native-toast-message';
 
 type Props = {};
 
 const ProductDetails = (props: Props) => {
   const { id, source } = useLocalSearchParams<{ id: string; source: string }>();
+  const router = useRouter();
   const { getProductDetails, loadingProductDetail, error } = useProducts();
   const {
     getCartItems,
@@ -40,7 +48,10 @@ const ProductDetails = (props: Props) => {
       product.category.name === 'Clothes' ||
       (product.category.name === 'Shoes' && !selectedSize)
     ) {
-      alert('Selecione cor e tamanho antes de adicionar ao carrinho.');
+      Toast.show({
+        type: 'info',
+        text1: 'Selecione cor e tamanho antes de adicionar ao carrinho.'
+      });
       return;
     }
 
@@ -57,12 +68,37 @@ const ProductDetails = (props: Props) => {
     const response = await postCartItem(newItem);
 
     if (response === 'success') {
-      alert('Item Adicionado no carrinho com sucesso')
+      Toast.show({
+        type: 'success',
+        text1: 'Item Adicionado no carrinho com sucesso'
+      });
     }
   };
 
   const onBuyNow = () => {
-    onAddToCart();
+    if (!product) return;
+
+    if (
+      !selectedColor
+    ) {
+      Toast.show({
+        type: 'info',
+        text1: 'Selecione cor e tamanho antes de continuar'
+      });
+      return;
+    }
+
+    //onAddToCart();
+    router.push({
+      pathname: '/checkout/[id]',
+      params: {
+        id: product.id,
+        source,
+        color: selectedColor,
+        size: selectedSize
+      }
+
+    })
   };
 
   useEffect(() => {

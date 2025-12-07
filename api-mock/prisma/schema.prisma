@@ -1,0 +1,113 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+model User {
+    id        String   @id @default(uuid())
+    name      String
+    email     String   @unique
+    phone     String   @unique
+    password  String
+    creatAt   DateTime @default(now())
+    updateAt  DateTime @updatedAt
+
+    orders    Order[]
+    cart      Cart?
+
+    @@map("users")
+}
+
+model Category {
+    id        Int      @id @default(autoincrement())
+    name      String
+    image     String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    products  Products[]
+
+    @@map("categories")
+}
+
+model Products {
+    id            String   @id @default(uuid())
+    title         String
+    price         Float
+    discount      Int?
+    description   String
+    images        String[]
+    rating        Float?
+    numberReviews Int?
+
+    categoryId    Int
+    category      Category @relation(fields: [categoryId], references: [id])
+
+    orderItems    OrderItem[]
+    cartItems     CartItem[]
+
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    @@map("products")
+}
+
+model Order {
+    id          String      @id @default(uuid())
+    userId      String
+    status      String      @default("pending")
+    total       Float
+    address     String?
+    paymentMethod String?
+    
+    user        User        @relation(fields: [userId], references: [id])
+    items       OrderItem[]
+
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+
+    @@map("orders")
+}
+
+model OrderItem {
+    id        String   @id @default(uuid())
+    orderId   String
+    productId String
+    quantity  Int
+    price     Float
+
+    order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+    product   Products @relation(fields: [productId], references: [id])
+
+    @@map("order_items")
+}
+
+model Cart {
+    id        String     @id @default(uuid())
+    userId    String     @unique
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+
+    user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+    items     CartItem[]
+
+    @@map("carts")
+}
+
+model CartItem {
+    id        String   @id @default(uuid())
+    cartId    String
+    productId String
+    quantity  Int      @default(1)
+
+    cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+    product   Products @relation(fields: [productId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("cart_items")
+}

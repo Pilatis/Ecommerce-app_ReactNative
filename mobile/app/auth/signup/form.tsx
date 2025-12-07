@@ -7,16 +7,30 @@ import { useValidationSchema } from '@/src/hooks/validations/useValidationSchema
 import { useAuth } from '@/src/hooks/useAuth';
 import { CreateUserDataForm } from '@/src/types/authContextType';
 import { Formik } from 'formik';
+import { useRouter } from 'expo-router';
 
 const SignUpForm = () => {
   const validationSchema = useValidationSchema();
-  const { createUser } = useAuth();
+  const router = useRouter();
+  const { createUser, login } = useAuth();
 
-  const onSubmit = (values: CreateUserDataForm) => {
+  const onSubmit = async (values: CreateUserDataForm) => {
     const { confirmPassword, ...rest } = values;
 
-    console.log('data', rest);
-    createUser(rest);
+    const response = await createUser(rest);
+
+    if (response === 'success') {
+      const formatData = {
+        email: values.email,
+        password: values.password
+      }
+    const response = await login(formatData);
+
+    if (response === 'success') {
+      router.push('/(tabs)')
+    }
+      
+    }
   };
   return (
     <AnimatedView
